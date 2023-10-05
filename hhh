@@ -1,0 +1,54 @@
+void setup()
+{
+  size(485,671);
+}
+void draw()
+{
+  background(255,255,255);
+
+  //选择一个合适的比例，我喜欢黄金比，全部由一个比例生成关系，会比较和谐
+  float a = 0.618;
+  float a2 = random(a*a,a+a);
+  float a3 = random(a2*a2,a2+a2);
+  float a4 = a3 * random(a,a3);
+
+  //设置颜色参数R，G，B
+  color R = color(random(0,255),random(0,255),random(0,255));
+  color B = color(random(0,255),random(0,255),random(0,255));
+  color Y = color(random(0,255),random(0,255),random(0,255));
+
+  //储存画布大小
+  int Len = 485;
+  int High = 671;
+
+  //先绘色块
+  noStroke();
+  fill(B);
+  rect(0,0,Len*a4,High*a4);
+  rect(0,High-High*a4*2,Len*a4,Len*a4);
+  rect(Len,High*a3,-Len*a3,High*a3);
+
+  fill(R);
+  rect(Len*a4,High*a4,Len-Len*a3-Len*a4,High*a3-High*a4);
+
+  fill(Y);
+  rect(Len-Len*a3,0,-(Len-Len*a3-Len*a4)/2,High*a4*0.5);
+  rect(Len,High,-(Len-Len*a3-Len*a4)/2-Len*a3,-High*a4*2);
+
+  //再绘线条，建议使用由块的顶点参数
+  stroke(0,0,0);
+  strokeWeight(8);
+  line(Len*a4,0.0,Len*a4,High-High*a4*2+Len*a4);
+  line(Len-Len*a3-(Len-Len*a3-Len*a4)/2,0,Len-Len*a3-(Len-Len*a3-Len*a4)/2,High*a4);
+  line(Len-Len*a3,0,Len-Len*a3,High-High*a4*2);
+  line(Len-(Len-Len*a3-Len*a4)/2-Len*a3,High,Len-(Len-Len*a3-Len*a4)/2-Len*a3,High-High*a4*2);
+
+
+  line(0,High*a3,Len,High*a3);
+  line(Len-Len*a3,High*a4*0.5,Len-Len*a3-(Len-Len*a3-Len*a4)/2,High*a4*0.5);
+  line(0,High*a4,Len-Len*a3,High*a4);
+  line(0,High-High*a4*2,Len,High-High*a4*2);
+  line(0,High-High*a4*2+Len*a4,Len-(Len-Len*a3-Len*a4)/2-Len*a3,High-High*a4*2+Len*a4);
+  line(Len,High*a3*2,Len-Len*a3,High*a3*2);
+
+}
