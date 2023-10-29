@@ -1,0 +1,21 @@
+PFont myFont;
+PImage img;
+int x, y;
+
+void setup() {
+  img = loadImage("cat.jpg");
+ size(400,400);
+ background(255);
+ noStroke();
+ 
+}
+void draw() {
+ x = round(random(width));
+ y = round(random(height));
+ color c = img.get(x, y);
+ myFont = createFont("Arial", 32);
+textFont(myFont);
+fill(c,70);
+translate(random(20,80),random(20,80));
+text(char(int(random(65,91))),x,y);
+}
